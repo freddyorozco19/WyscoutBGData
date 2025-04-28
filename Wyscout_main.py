@@ -37,14 +37,8 @@ im = Image.open("Resources/Isotipo-FF046.ico")
 st.set_page_config(layout="wide", page_icon=im)
 st.logo("Resources/Isotipo-FF046.png")
 navigation_tree = {"Main": [
-        st.Page("main/OptaEventingData.py", title="Eventing Data", icon=":material/download:"),
-        st.Page("main/OptaJoinData.py", title="Join Data", icon=":material/cell_merge:"),
-        st.Page("main/OptaExploreData.py", title="Explore Data", icon=":material/search_insights:"),
-        st.Page("main/OptaExploreMatchData.py", title="Explore Match Data", icon=":material/search_insights:"),
-        st.Page("main/OptaExploreTeamData.py", title="Explore Team Data", icon=":material/analytics:"),
-        st.Page("main/OptaExploreLeagueData.py", title="Explore League Data", icon=":material/analytics:"),   
-        st.Page("main/OptaProMatchData.py", title="Pro Match Data", icon=":material/leaderboard:"),
-        st.Page("main/OptaRegisterData.py", title="Register Data", icon=":material/lists:")]}
+        st.Page("main/WyscoutBG_Data.py", title="BG Data", icon=":material/leaderboard:"),
+        st.Page("main/Wyscout_JoinData.py", title="Join Data", icon=":material/lists:")]}
 
 nav = st.navigation(navigation_tree, position="sidebar")
 nav.run()
