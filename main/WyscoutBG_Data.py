@@ -1,3 +1,49 @@
 import streamlit as st
+#import hydralit_components as hc
+import datetime
+import base64
+import pandas as pd
+from io import BytesIO
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+import matplotlib.pyplot as mplt
+import matplotlib.font_manager as font_manager
+import mplsoccer
+from mplsoccer import Pitch, VerticalPitch, FontManager
+import sklearn
+from sklearn.preprocessing import StandardScaler
+from scipy.spatial import ConvexHull
+from matplotlib.colors import LinearSegmentedColormap
+import matplotlib.patheffects as path_effects
+from scipy.ndimage import gaussian_filter
+import seaborn as sns
+from matplotlib import colors as mcolors
+import requests
+from PIL import Image
+from matplotlib.patches import Rectangle
+import math
+import io
+
+
+
+
+font_path = 'Resources/keymer-bold.otf'  # Your font path goes here
+font_manager.fontManager.addfont(font_path)
+prop2 = font_manager.FontProperties(fname=font_path)
+
+font_path2 = 'Resources/BasierCircle-Italic.ttf'  # Your font path goes here
+font_manager.fontManager.addfont(font_path2)
+prop3 = font_manager.FontProperties(fname=font_path2)
+
+with st.form(key='form4'):
+    uploaded_file = st.file_uploader("Choose a excel file", type="xlsx")
+    DataMode = st.checkbox("Activate calculated columns")
+    submit_button2 = st.form_submit_button(label='Aceptar')
+
+if uploaded_file is not None:
+    df = pd.read_excel(uploaded_file)
+
+#st.markdown("<style> div { text-align: center } </style>", unsafe_allow_html=True)
 
 st.subheader("WYSCOUT BG DATA")
