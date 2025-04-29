@@ -74,9 +74,10 @@ with filteropt02:
 
 with filteropt03:
 
-    MaxAge = df['Age'].max()
-    MinAge = df['Age'].min()
+    MaxAge = round(df['Age'].max())
+    MinAge = round(df['Age'].min())
     AgeSel = st.slider('Age', MinAge, MaxAge)
+    #df = df[df['Age'] >= 
 
 #df = df.drop(['Wyscout id', 'Team logo', 'Height', 'Weight']).reset_index(drop=True)
 df = df.drop(['Wyscout id', 'Team logo', 'Height', 'Weight'], axis=1)
