@@ -47,3 +47,4 @@ if uploaded_file is not None:
 #st.markdown("<style> div { text-align: center } </style>", unsafe_allow_html=True)
 
 st.subheader("WYSCOUT BG DATA")
+st.dataframe(df)
