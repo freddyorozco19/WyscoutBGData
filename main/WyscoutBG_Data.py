@@ -38,6 +38,10 @@ prop3 = font_manager.FontProperties(fname=font_path2)
 
 ########################################################################################################################################################################################################################################################################
 
+#with st.form(key='form4'):
+    #uploaded_file = st.file_uploader("Choose a excel file", type="csv")
+    #submit_button2 = st.form_submit_button(label='Aceptar')
+
 with st.form(key='form4'):
     uploaded_file = st.file_uploader("Choose a excel file", type="xlsx")
     #DataMode = st.checkbox("Activate calculated columns")
@@ -60,6 +64,15 @@ with filteropt01:
 
     TeamList = df['Team'].drop_duplicates().tolist()
     TeamSel = st.selectbox('Team', TeamList)
+
+with filteropt02:
+
+    
+    MinSel = st.slider('Minutes (%)', 0, 100)
+    #FILTER BY MINUTES
+    maxmin = df['Minutes played'].max()
+    minsel1 = (minsel*maxmin)/100
+    df = df[df['Minutes played'] >= minsel1].reset_index(drop=True)
 
 #df = df.drop(['Wyscout id', 'Team logo', 'Height', 'Weight']).reset_index(drop=True)
 df = df.drop(['Wyscout id', 'Team logo', 'Height', 'Weight'], axis=1)
