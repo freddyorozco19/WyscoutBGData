@@ -48,5 +48,7 @@ if uploaded_file is not None:
 
 st.subheader("WYSCOUT BG DATA")
 
-df = df.drop(['Wyscout id', 'Team logo', 'Height', 'Weight']).reset_index(drop=True)
+#df = df.drop(['Wyscout id', 'Team logo', 'Height', 'Weight']).reset_index(drop=True)
+df = df.drop(['Wyscout id', 'Team logo', 'Height', 'Weight'], axis=1)
+
 st.dataframe(df)
