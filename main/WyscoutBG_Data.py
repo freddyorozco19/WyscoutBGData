@@ -26,6 +26,7 @@ import math
 import io
 
 
+########################################################################################################################################################################################################################################################################
 
 
 font_path = 'Resources/keymer-bold.otf'  # Your font path goes here
@@ -35,16 +36,18 @@ prop2 = font_manager.FontProperties(fname=font_path)
 font_path2 = 'Resources/BasierCircle-Italic.ttf'  # Your font path goes here
 font_manager.fontManager.addfont(font_path2)
 prop3 = font_manager.FontProperties(fname=font_path2)
+########################################################################################################################################################################################################################################################################
 
 with st.form(key='form4'):
     uploaded_file = st.file_uploader("Choose a excel file", type="xlsx")
-    DataMode = st.checkbox("Activate calculated columns")
+    #DataMode = st.checkbox("Activate calculated columns")
     submit_button2 = st.form_submit_button(label='Aceptar')
 
 if uploaded_file is not None:
     df = pd.read_excel(uploaded_file)
 
 #st.markdown("<style> div { text-align: center } </style>", unsafe_allow_html=True)
+########################################################################################################################################################################################################################################################################
 
 st.subheader("WYSCOUT BG DATA")
 
