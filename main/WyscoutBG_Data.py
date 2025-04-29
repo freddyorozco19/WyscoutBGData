@@ -28,7 +28,6 @@ import io
 
 ########################################################################################################################################################################################################################################################################
 
-
 font_path = 'Resources/keymer-bold.otf'  # Your font path goes here
 font_manager.fontManager.addfont(font_path)
 prop2 = font_manager.FontProperties(fname=font_path)
@@ -36,6 +35,7 @@ prop2 = font_manager.FontProperties(fname=font_path)
 font_path2 = 'Resources/BasierCircle-Italic.ttf'  # Your font path goes here
 font_manager.fontManager.addfont(font_path2)
 prop3 = font_manager.FontProperties(fname=font_path2)
+
 ########################################################################################################################################################################################################################################################################
 
 with st.form(key='form4'):
@@ -50,6 +50,16 @@ if uploaded_file is not None:
 ########################################################################################################################################################################################################################################################################
 
 st.subheader("WYSCOUT BG DATA")
+
+########################################################################################################################################################################################################################################################################
+# FILTROS
+
+filteropt01, filteropt02, filteropt03 = st.columns(3)
+
+with filteropt01:
+
+    TeamList = df['Team'].drop_duplicates().tolist()
+    TeamSel = st.selectbox('Team', TeamList)
 
 #df = df.drop(['Wyscout id', 'Team logo', 'Height', 'Weight']).reset_index(drop=True)
 df = df.drop(['Wyscout id', 'Team logo', 'Height', 'Weight'], axis=1)
