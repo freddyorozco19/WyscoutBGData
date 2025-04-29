@@ -93,7 +93,7 @@ with filteropt03:
 # 
 
 df['90s'] = round((df['Minutes played']/90), 2)
-df = df[[col for col in df.columns if col != '90s'][:19] + ['90s'] + [col for col in df.columns if col != '90s'][19:]]
+df = df[[col for col in df.columns if col != '90s'][:20] + ['90s'] + [col for col in df.columns if col != '90s'][20:]]
 #df = df.drop(['Wyscout id', 'Team logo', 'Height', 'Weight']).reset_index(drop=True)
 df = df.drop(['Wyscout id', 'Team logo', 'Height', 'Weight'], axis=1)
 
