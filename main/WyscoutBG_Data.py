@@ -63,7 +63,13 @@ filteropt01, filteropt02, filteropt03 = st.columns(3)
 with filteropt01:
 
     TeamList = df['Team'].drop_duplicates().tolist()
+    TeamList.insert(0, "All Teams")  
     TeamSel = st.selectbox('Team', TeamList)
+    dfbk_filteropt_01 = df
+    if TeamSel == "All Teams":
+        df = dfbk_filteropt_01
+    else:
+        df = df[df['Team'] == TeamSel].reset_index(drop=True)
 
 with filteropt02:
 
