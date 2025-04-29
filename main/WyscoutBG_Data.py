@@ -47,4 +47,6 @@ if uploaded_file is not None:
 #st.markdown("<style> div { text-align: center } </style>", unsafe_allow_html=True)
 
 st.subheader("WYSCOUT BG DATA")
+
+df = df.drop(['Wyscout id', 'Team logo', 'Height', 'Weight']).reset_index(drop=True)
 st.dataframe(df)
