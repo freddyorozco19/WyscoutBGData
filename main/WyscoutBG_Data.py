@@ -71,7 +71,7 @@ with filteropt02:
     MinSel = st.slider('Minutes (%)', 0, 100)
     #FILTER BY MINUTES
     maxmin = df['Minutes played'].max()
-    minsel1 = (minsel*maxmin)/100
+    minsel1 = (MinSel*maxmin)/100
     df = df[df['Minutes played'] >= minsel1].reset_index(drop=True)
 
 #df = df.drop(['Wyscout id', 'Team logo', 'Height', 'Weight']).reset_index(drop=True)
