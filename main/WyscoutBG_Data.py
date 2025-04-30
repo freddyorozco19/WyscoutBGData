@@ -52,27 +52,7 @@ if uploaded_file is not None:
 
 #st.markdown("<style> div { text-align: center } </style>", unsafe_allow_html=True)
 ########################################################################################################################################################################################################################################################################
-st.markdown(
-    """
-    <style>
-    /* Aumentar tamaño de texto de métricas */
-    .stMetricValue {
-        font-size: 1px;
-    }
 
-    /* Hacer títulos más visibles */
-    .stMarkdown h3 {
-        font-weight: 700;
-    }
-
-    /* Centrar métricas (en algunos casos puede requerir ajuste manual) */
-    .element-container {
-        text-align: center;
-    }
-    </style>
-    """,
-    unsafe_allow_html=True,
-)
 
 st.subheader("EXPLORE WY DATA")
 
@@ -121,27 +101,52 @@ df = df.drop(['Wyscout id', 'Team logo', 'Height', 'Weight'], axis=1)
 st.dataframe(df)
 
 
-#
+# Función para mostrar tarjetas
+def metric_card(title, value):
+    st.markdown(f"""
+        <div style="
+            background-color:#1c1c1c;
+            padding:20px;
+            border-radius:15px;
+            text-align:center;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+            border: 1px solid #444;
+            margin-bottom: 10px;
+        ">
+            <p style='margin:0; font-size:14px; color:#aaa'>{title}</p>
+            <p style='margin:0; font-size:28px; font-weight:bold; color:#f5f5f5'>{value}</p>
+        </div>
+    """, unsafe_allow_html=True)
+
 # Selección de jugador
 player = st.selectbox("Selecciona un jugador", df["Player"].unique())
 player_data = df[df["Player"] == player].iloc[0]
 
-# Mostrar resumen
-st.markdown("### Resumen del jugador")
-col1, col2 = st.columns([3, 1])
-with col1:
-    st.markdown(f"**{player_data['Full name']}**")
-    st.markdown(player_data["Team"])
-    st.markdown(player_data["Primary position"])
-with col2:
-    st.markdown(player_data["Competition"])
+# Datos generales del jugador
+col_info1, col_info2 = st.columns([3, 1])
+with col_info1:
+    st.markdown(f"### {player_data['Full name']}")
+    st.markdown(f"**Equipo:** {player_data['Team']}")
+    st.markdown(f"**Posición:** {player_data['Primary position']}")
+with col_info2:
+    st.markdown(f"**Competition:** {player_data['Competition']}")
 
-# KPIs principales
+st.markdown("---")
+
+# Métricas clave (puedes adaptar estos nombres si usas otros en el Excel)
 col1, col2, col3 = st.columns(3)
 col4, col5, col6 = st.columns(3)
-col1.metric("Goles", player_data["Goals"])
-col2.metric("Asistencias", player_data["Assists"])
-col3.metric("Pases", int(player_data["Duels per 90"]))
-col4.metric("Entradas", int(player_data["Aerial duels per 90"]))
-col5.metric("Intercepciones", int(player_data["xG"]))
-col6.metric("Rating", round(player_data["xA"], 2))
+
+with col1:
+    metric_card("Goles", int(player_data.get("Goals", 0)))
+with col2:
+    metric_card("Asistencias", int(player_data.get("Assists", 0)))
+with col3:
+    metric_card("xG", int(player_data.get("xG", 0)))
+with col4:
+    metric_card("xA", int(player_data.get("xA", 0)))
+with col5:
+    metric_card("Duels per 90", int(player_data.get("Duels per 90", 0)))
+with col6:
+    rating = round(player_data.get("Duels per 90", 0), 2)
+    metric_card("Duels per 90", rating)
