@@ -98,3 +98,29 @@ df = df[[col for col in df.columns if col != '90s'][:20] + ['90s'] + [col for co
 df = df.drop(['Wyscout id', 'Team logo', 'Height', 'Weight'], axis=1)
 
 st.dataframe(df)
+
+
+#
+# Selección de jugador
+player = st.selectbox("Selecciona un jugador", df["Player"].unique())
+player_data = df[df["Player"] == player].iloc[0]
+
+# Mostrar resumen
+st.markdown("### Resumen del jugador")
+col1, col2 = st.columns([3, 1])
+with col1:
+    st.markdown(f"**{player_data['Full name']}**")
+    st.markdown(player_data["Team"])
+    st.markdown(player_data["Primary position"])
+with col2:
+    st.markdown(player_data["Competition"])
+
+# KPIs principales
+col1, col2, col3 = st.columns(3)
+col4, col5, col6 = st.columns(3)
+col1.metric("Goles", player_data["Goals"])
+col2.metric("Asistencias", player_data["Assists"])
+col3.metric("Pases", int(player_data["Duels per 90"]))
+col4.metric("Entradas", int(player_data["Aeril duels per 90"]))
+col5.metric("Intercepciones", int(player_data["xG"]))
+col6.metric("Rating", round(player_data["xA"], 2))
