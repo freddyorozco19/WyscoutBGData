@@ -57,7 +57,7 @@ st.markdown(
     <style>
     /* Aumentar tamaño de texto de métricas */
     .stMetricValue {
-        font-size: 98px;
+        font-size: 1px;
     }
 
     /* Hacer títulos más visibles */
