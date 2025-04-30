@@ -52,6 +52,27 @@ if uploaded_file is not None:
 
 #st.markdown("<style> div { text-align: center } </style>", unsafe_allow_html=True)
 ########################################################################################################################################################################################################################################################################
+st.markdown(
+    """
+    <style>
+    /* Aumentar tamaño de texto de métricas */
+    .stMetricValue {
+        font-size: 28px;
+    }
+
+    /* Hacer títulos más visibles */
+    .stMarkdown h3 {
+        font-weight: 700;
+    }
+
+    /* Centrar métricas (en algunos casos puede requerir ajuste manual) */
+    .element-container {
+        text-align: center;
+    }
+    </style>
+    """,
+    unsafe_allow_html=True,
+)
 
 st.subheader("EXPLORE WY DATA")
 
