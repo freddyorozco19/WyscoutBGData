@@ -39,6 +39,5 @@ st.logo("Resources/Isotipo-FF046.png")
 navigation_tree = {"Main": [
         st.Page("main/WyscoutBG_Data.py", title="BG Data", icon=":material/leaderboard:"),
         st.Page("main/Wyscout_JoinData.py", title="Join Data", icon=":material/lists:")]}
-
 nav = st.navigation(navigation_tree, position="sidebar")
 nav.run()
