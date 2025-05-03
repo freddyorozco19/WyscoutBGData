@@ -30,7 +30,6 @@ import requests
 from matplotlib.patches import Rectangle
 import math
 from PIL import Image
-
 ############################################################################################################################################################################################################################
 
 im = Image.open("Resources/Isotipo-FF046.ico")
